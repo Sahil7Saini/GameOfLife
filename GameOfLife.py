@@ -3,6 +3,7 @@
 # More programs at UsingPython.com/programs
 #----------------------------------------------
 
+#creating a function containing necessary functions for running Game of Life code
 import random
 import time
 import os
@@ -15,7 +16,7 @@ else:
     CLEAR = 'clear'
 
 #---------------------------------------------------------------------------
-
+#defining a function to initialise the basic lists according to the number of rows and columns
 def initGrid(rows, cols, makingGen):
     for i in range(rows):
         makingGenRow = []
@@ -31,7 +32,7 @@ def initGrid(rows, cols, makingGen):
         makingGen += [makingGenRow]
 
 #---------------------------------------------------------------------------
-    
+#defining a function to print the board containing 0s or 1s for each generation
 def printGen(rows, cols, makingGen, genNo):
     os.system(CLEAR)
 
@@ -48,14 +49,14 @@ def printGen(rows, cols, makingGen, genNo):
         print("")
 
 #---------------------------------------------------------------------------
-
+#defining a function to process the next generation according to the inputs from previous generation
 def processNextGen(rows, cols, currentStatus, nextStatus):
     for i in range(1,rows-1):
         for j in range(1,cols-1):
             nextStatus[i][j] = processNeighbours(i, j, currentStatus)
 
 #---------------------------------------------------------------------------
-      
+#defining a function to process a life or death according to the neighbours following the rules of the game
 def processNeighbours(x, y, makingGen):
     nCount = 0
     for j in range(y-1,y+2):
